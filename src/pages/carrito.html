@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Carrito - TECHBIOMED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#6c757d',
+                        accent: '#764ba2',
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+        }
+
+        .app-container {
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        .content-area {
+            height: calc(100vh - 140px);
+            height: calc(100dvh - 140px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .top-header {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        .touch-feedback {
+            transition: all 0.1s ease;
+        }
+
+        .touch-feedback:active {
+            transform: scale(0.95);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="bg-white shadow-sm top-header relative z-40">
+            <div class="px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <button onclick="history.back()" class="touch-feedback">
+                        <i class="fas fa-arrow-left text-xl text-gray-600"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold">Mi Carrito</h1>
+                    <button class="touch-feedback">
+                        <i class="fas fa-ellipsis-v text-xl text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido del carrito -->
+        <main class="content-area">
+            <div class="px-4 py-4">
+                <!-- Items del carrito -->
+                <div class="space-y-4 mb-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="flex space-x-4">
+                            <img src="/public/images/bomba_de_infusion.png" alt="Bomba de infusión"
+                                class="w-20 h-20 rounded-xl">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h3 class="font-medium text-gray-800">Bomba de infusión</h3>
+                                        <p class="text-sm text-gray-500">Hospira Series</p>
+                                    </div>
+                                    <button class="text-gray-400 touch-feedback">
+                                        <i class="fas fa-trash text-sm"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-800">$650</span>
+                                    <div class="flex items-center space-x-3">
+                                        <button
+                                            class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center touch-feedback">
+                                            <i class="fas fa-minus text-sm"></i>
+                                        </button>
+                                        <span class="font-medium">1</span>
+                                        <button
+                                            class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center touch-feedback">
+                                            <i class="fas fa-plus text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="flex space-x-4">
+                            <img src="/public/images/monitor.png" alt="Monitor" class="w-20 h-20 rounded-xl">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h3 class="font-medium text-gray-800">Monitor de signos vitales</h3>
+                                        <p class="text-sm text-gray-500">Mindray VS 12</p>
+                                    </div>
+                                    <button class="text-gray-400 touch-feedback">
+                                        <i class="fas fa-trash text-sm"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-bold text-gray-800">$950</span>
+                                    <div class="flex items-center space-x-3">
+                                        <button
+                                            class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center touch-feedback">
+                                            <i class="fas fa-minus text-sm"></i>
+                                        </button>
+                                        <span class="font-medium">2</span>
+                                        <button
+                                            class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center touch-feedback">
+                                            <i class="fas fa-plus text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cupón de descuento -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex-1 relative">
+                            <input type="text" placeholder="Código de cupón"
+                                class="w-full bg-gray-100 rounded-xl py-3 pl-4 pr-20 text-sm">
+                            <button
+                                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white px-4 py-1.5 rounded-lg text-sm touch-feedback">
+                                Aplicar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen del pedido -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">Resumen del pedido</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span class="font-medium">$2,550</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Envío</span>
+                            <span class="font-medium text-green-600">Gratis</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Descuento</span>
+                            <span class="font-medium text-red-600">-$50</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <div class="flex justify-between">
+                                <span class="text-lg font-semibold">Total</span>
+                                <span class="text-lg font-bold text-primary">$2,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espacio para botón fijo -->
+                <div class="h-20"></div>
+            </div>
+        </main>
+
+        <!-- Botón de checkout fijo -->
+        <div class="fixed bottom-16 left-0 right-0 px-4 pb-4 bg-gradient-to-t from-white via-white to-transparent pt-4">
+            <button class="w-full bg-primary text-white font-semibold py-4 rounded-2xl touch-feedback">
+                Proceder al pago - $2,500
+            </button>
+        </div>
+
+        <!-- Navegación inferior -->
+        <nav class="bottom-nav bg-white border-t border-gray-200">
+            <div class="flex items-center justify-around py-2">
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback">
+                     <a href="/src/index.html" class="relative">
+                         <i class="fas fa-home text-xl mb-1 text-gray-400"></i>
+                         <span class="text-xs text-gray-400">Inicio</span>
+                     </a>
+                </button>
+                <button class="nav-item active flex flex-col items-center py-2 px-3 touch-feedback">
+                    <a href="/src/pages/carrito.html" class="relative">
+                        <i class="fas fa-shopping-cart text-xl mb-1 text-primary"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                    </a>
+                    <span class="text-xs text-primary">Carrito</span>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback">
+                   <a href="/src/pages/contacto.html" class="relative">
+                       <i class="fas fa-phone text-xl mb-1 text-gray-400"></i>
+                       <span class="text-xs text-gray-400">Contacto</span>
+                   </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback"
+                    onclick="window.location.href='login.html'">
+                    <i class="fas fa-user text-xl mb-1 text-gray-400"></i>
+                    <span class="text-xs text-gray-400">Perfil</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script src="mobile-app.js"></script>
+</body>
+<!-- CREADO POR ANDRES SIERRA -->
+</html>

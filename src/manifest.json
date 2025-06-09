@@ -1,0 +1,43 @@
+{
+    "name": "TECHBIOMED - Equipos Médicos - Andres Sierra",
+    "short_name": "TECHBIOMED",
+    "description": "Aplicación móvil para equipos biomédicos y suministros médicos",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "es",
+    "categories": [
+        "medical",
+        "shopping",
+        "business"
+    ],
+    "shortcuts": [
+        {
+            "name": "Ver Carrito",
+            "short_name": "Carrito",
+            "description": "Acceso rápido al carrito de compras",
+            "url": "/carrito.html",
+            "icons": [
+                {
+                    "src": "/placeholder.svg?height=96&width=96",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Contacto",
+            "short_name": "Contacto",
+            "description": "Información de contacto y soporte",
+            "url": "/contacto.html",
+            "icons": [
+                {
+                    "src": "/placeholder.svg?height=96&width=96",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Contacto - TECHBIOMED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#6c757d',
+                        accent: '#764ba2',
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+        }
+
+        .app-container {
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        .content-area {
+            height: calc(100vh - 140px);
+            height: calc(100dvh - 140px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .top-header {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        .touch-feedback {
+            transition: all 0.1s ease;
+        }
+
+        .touch-feedback:active {
+            transform: scale(0.95);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="bg-white shadow-sm top-header relative z-40">
+            <div class="px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <button onclick="history.back()" class="touch-feedback">
+                        <i class="fas fa-arrow-left text-xl text-gray-600"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold">Contacto</h1>
+                    <div class="w-6"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido de contacto -->
+        <main class="content-area">
+            <div class="px-4 py-4">
+                <!-- Información de contacto -->
+                <div class="space-y-4 mb-6">
+                    <!-- Teléfono -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-phone text-blue-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800">Llámanos</h3>
+                                <p class="text-sm text-gray-500 mb-1">Disponibles 24/7</p>
+                                <a href="tel:+5700000000" class="text-primary font-medium">+57 000 000 000</a>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center touch-feedback">
+                                <i class="fas fa-phone text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-envelope text-green-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800">Escríbenos</h3>
+                                <p class="text-sm text-gray-500 mb-1">Respuesta en 24 horas</p>
+                                <a href="mailto:customer@techbiomed.com"
+                                    class="text-primary font-medium">customer@techbiomed.com</a>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center touch-feedback">
+                                <i class="fas fa-envelope text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-green-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800">WhatsApp</h3>
+                                <p class="text-sm text-gray-500 mb-1">Chat en tiempo real</p>
+                                <span class="text-primary font-medium">+57 000 000 000</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center touch-feedback">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de contacto -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">Envíanos un mensaje</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Tu nombre *" required
+                                class="w-full bg-gray-100 rounded-xl py-3 px-4 text-sm">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Tu correo *" required
+                                class="w-full bg-gray-100 rounded-xl py-3 px-4 text-sm">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Tu teléfono *" required
+                                class="w-full bg-gray-100 rounded-xl py-3 px-4 text-sm">
+                        </div>
+                        <div>
+                            <select class="w-full bg-gray-100 rounded-xl py-3 px-4 text-sm text-gray-600">
+                                <option>Selecciona un tema</option>
+                                <option>Consulta de productos</option>
+                                <option>Soporte técnico</option>
+                                <option>Cotización</option>
+                                <option>Garantía</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea placeholder="Tu mensaje" rows="4"
+                                class="w-full bg-gray-100 rounded-xl py-3 px-4 text-sm resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white font-semibold py-3 rounded-xl touch-feedback">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Horarios de atención -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">Horarios de atención</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Lunes - Viernes</span>
+                            <span class="font-medium">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sábados</span>
+                            <span class="font-medium">9:00 AM - 2:00 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Domingos</span>
+                            <span class="font-medium text-red-500">Cerrado</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Emergencias</span>
+                            <span class="font-medium text-green-600">24/7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espacio para navegación -->
+                <div class="h-20"></div>
+            </div>
+        </main>
+
+        <!-- Navegación inferior -->
+        <nav class="bottom-nav bg-white border-t border-gray-200">
+            <div class="flex items-center justify-around py-2">
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback">
+                    <a href="/src/index.html" class="relative">
+                        <i class="fas fa-home text-xl mb-1 text-gray-400"></i>
+                        <span class="text-xs text-gray-400">Inicio</span>
+                    </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback">
+                    <a href="/src/pages/carrito.html" class="relative">
+                        <i class="fas fa-shopping-cart text-xl mb-1 text-gray-400"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                        <span class="text-xs text-gray-400">Carrito</span>
+                    </a>
+                </button>
+                <button class="nav-item active flex flex-col items-center py-2 px-3 touch-feedback">
+                   <a href="/src/pages/contacto.html" class="relative">
+                       <i class="fas fa-phone text-xl mb-1 text-primary"></i>
+                       <span class="text-xs text-primary">Contacto</span>
+                   </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback"
+                    onclick="window.location.href='login.html'">
+                    <i class="fas fa-user text-xl mb-1 text-gray-400"></i>
+                    <span class="text-xs text-gray-400">Perfil</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script src="mobile-app.js"></script>
+</body>
+<!-- CREADO POR ANDRES SIERRA -->
+</html>

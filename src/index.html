@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>TECHBIOMED - App Móvil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#6c757d',
+                        accent: '#764ba2',
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos específicos para app móvil */
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+        }
+
+        .app-container {
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        .content-area {
+            height: calc(100vh - 140px);
+            height: calc(100dvh - 140px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .top-header {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        /* Animaciones tipo app nativa */
+        .page-transition {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .slide-in {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .slide-in.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Efectos de toque */
+        .touch-feedback {
+            transition: all 0.1s ease;
+        }
+
+        .touch-feedback:active {
+            transform: scale(0.95);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="app-container">
+        <!-- Header Superior -->
+        <header class="bg-white shadow-sm top-header relative z-40">
+            <div class="px-4 py-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="/public/logo/tech_biomed_logo.png" alt="TECHBIOMED" class="h-8">
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i class="fas fa-search text-gray-600 text-lg"></i>
+                        </div>
+                        <div class="relative">
+                            <i class="fas fa-shopping-cart text-gray-600 text-lg"></i>
+                            <span
+                                class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="mt-3 relative">
+                    <input type="text" placeholder="Buscar equipos médicos..."
+                        class="w-full bg-gray-100 rounded-full py-2 pl-10 pr-4 text-sm">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área de contenido principal -->
+        <main class="content-area">
+            <!-- Banner promocional -->
+            <section class="mx-4 mt-4 mb-6">
+                <div
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h1 class="text-3xl font-bold mb-1">40% OFF</h1>
+                        <p class="text-lg mb-4">En equipos biomédicos</p>
+                        <button
+                            class="bg-white text-blue-600 font-semibold py-2 px-6 rounded-full text-sm touch-feedback">
+                            COMPRAR AHORA
+                        </button>
+                    </div>
+                    <div class="absolute right-4 top-4 opacity-20">
+                        <i class="fas fa-heartbeat text-6xl"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorías rápidas -->
+            <section class="px-4 mb-6">
+                <h2 class="text-lg font-semibold mb-4">Categorías</h2>
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="text-center touch-feedback">
+                        <div class="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-stethoscope text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-600">Cirugía</span>
+                    </div>
+                    <div class="text-center touch-feedback">
+                        <div class="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-hospital text-green-600 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-600">Hospital</span>
+                    </div>
+                    <div class="text-center touch-feedback">
+                        <div class="bg-red-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-ambulance text-red-600 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-600">Urgencias</span>
+                    </div>
+                    <div class="text-center touch-feedback">
+                        <div class="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-microscope text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="text-xs text-gray-600">Laboratorio</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Productos destacados -->
+            <section class="px-4 mb-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold">Productos Destacados</h2>
+                    <button class="text-primary text-sm font-medium">Ver todos</button>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Producto 1 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm touch-feedback">
+                        <div class="flex space-x-4">
+                            <div class="relative">
+                                <img src="/public/images/monitor.png" alt="Monitor"
+                                    class="w-20 h-20 rounded-xl">
+                                <div
+                                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                                    SALE</div>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium text-gray-800 mb-1">Monitor de signos vitales</h3>
+                                <p class="text-sm text-gray-500 mb-2">Mindray VS 12</p>
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-400 text-sm">
+                                        ★★★★★
+                                    </div>
+                                    <span class="text-xs text-gray-400 ml-1">(15)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">$350</span>
+                                        <span class="text-sm text-gray-400 line-through ml-1">$400</span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm touch-feedback">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm touch-feedback">
+                        <div class="flex space-x-4">
+                            <div class="relative">
+                                <img src="/public/images/ecografo.png" alt="Ecógrafo"
+                                    class="w-20 h-20 rounded-xl">
+                                <div
+                                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                                    SALE</div>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium text-gray-800 mb-1">Ecógrafo Samsung</h3>
+                                <p class="text-sm text-gray-500 mb-2">Prime 5G</p>
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-400 text-sm">
+                                        ★★★★☆
+                                    </div>
+                                    <span class="text-xs text-gray-400 ml-1">(78)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">$950</span>
+                                        <span class="text-sm text-gray-400 line-through ml-1">$1200</span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm touch-feedback">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 3 -->
+                    <div class="bg-white rounded-2xl p-4 shadow-sm touch-feedback">
+                        <div class="flex space-x-4">
+                            <div class="relative">
+                                <img src="/public/images/bomba_de_infusion.png" alt="Bomba" class="w-20 h-20 rounded-xl">
+                                <div
+                                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                                    SALE</div>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-medium text-gray-800 mb-1">Bomba de infusión</h3>
+                                <p class="text-sm text-gray-500 mb-2">Hospira Series 6</p>
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-400 text-sm">
+                                        ★★★★☆
+                                    </div>
+                                    <span class="text-xs text-gray-400 ml-1">(32)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-lg font-bold text-gray-800">$175</span>
+                                        <span class="text-sm text-gray-400 line-through ml-1">$200</span>
+                                    </div>
+                                    <button class="bg-primary text-white px-4 py-2 rounded-full text-sm touch-feedback">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Espacio para navegación inferior -->
+            <div class="h-20"></div>
+        </main>
+
+        <!-- Navegación inferior tipo app -->
+        <nav class="bottom-nav bg-white border-t border-gray-200">
+            <div class="flex items-center justify-around py-2">
+                <button class="nav-item active flex flex-col items-center py-2 px-3 touch-feedback" data-page="home">
+                   <a href="/src/index.html" class="relative">
+                       <i class="fas fa-home text-xl mb-1"></i>
+                       <span class="text-xs">Inicio</span>
+                   </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback" data-page="cart">
+                    <a href="/src/pages/carrito.html" class="relative">
+                        <i class="fas fa-shopping-cart text-xl mb-1"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                        <span class="text-xs">Carrito</span>
+                    </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback" data-page="contact">
+                    <a href="/src/pages/contacto.html" class="relative">
+                        <i class="fas fa-phone text-xl mb-1"></i>
+                        <span class="text-xs">Contacto</span>
+                    </a>
+                </button>
+                <button class="nav-item flex flex-col items-center py-2 px-3 touch-feedback" data-page="profile">
+                    <a href="/src/pages/login.html" class="relative">
+                        <i class="fas fa-user text-xl mb-1"></i>
+                        <span class="text-xs">Perfil</span>
+                    </a>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script src="mobile-app.js"></script>
+</body>
+<!-- CREADO POR ANDRES SIERRA -->
+</html>
